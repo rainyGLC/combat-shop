@@ -1,0 +1,242 @@
+<view class="page-container" >
+  <view class="detail-container">
+    <view class="detail-image">
+      <image class="detail-image-url" src="{{details.image_url}}"></image>
+    </view>
+    <view class="detail-centent">
+      <view class="detail-price">¥{{details.price}}</view>
+      <view class="detail-title">{{details.title}}</view> 
+    </view>
+    
+    <view class="details-desc">
+      <view class="details-desc-seed">
+        <text class="details-item">发货</text>
+        <text class="details-item-desc">上海 ｜ 快递 : 10.00</text>
+        <text class="details-item-desc-sell">月销2.0万＋</text>
+      </view>
+      <view class="details-desc-seed">
+        <text class="details-item">活动</text>
+        <text class="details-item-desc">去天猫App下单可兑农场水果🍉</text>
+      </view>
+    </view>
+
+    <view class="details-desc">
+      <view class="details-desc-seed">
+        <text class="details-item">保障</text>
+        <text class="details-item-desc">正品 门店自提 极速退款 七天退换</text>
+      </view>
+    </view>
+
+    <view class="details-desc">
+      <view class="details-desc-seed" bindtap="hanldSelected">
+        <text class="details-item">选择</text>
+        <text class="details-item-select">多种颜色可选</text>
+      </view>
+      <view>
+        <text class="details-item">参数</text>
+        <text class="details-item-desc">品牌 尺寸</text>
+      </view>
+    </view>
+
+
+    <view class="price-message">
+      <image class="price-message-url" src="{{previews[1]}}"></image>
+    </view>
+
+     <view class="size-message">
+      <image class="size-message-url" src="{{previews[3]}}">
+      </image>
+    </view>
+
+     <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[6]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[7]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[8]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[9]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[10]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[11]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[12]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[13]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[14]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[15]}}">
+      </image>
+    </view>
+
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[16]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[17]}}">
+      </image>
+    </view>
+
+    <view class="detail-message">
+      <image class="detail-message-url" src="{{previews[18]}}">
+      </image>
+    </view>
+  </view>
+  <view class="details-end">
+    <view class="end-container">
+      <view class="store-item">
+        <view class="store">店铺</view>
+      </view>
+      <view class="service-item">
+        <view class="service">客服</view>
+      </view>
+
+      <view class="collect-item">
+         <view class="collect">收藏</view>
+      </view>
+      <view class="add_cart-item">
+        <view class="add_cart acive" bindtap="hanldSelected">加入购物车</view>
+        <view class="purchase">立即购买</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="shade-contanter" hidden="{{show}}">
+    <view class="shade-popup">
+      <view class="shade-blocklevel">
+        <view class="shade-topbar">
+          <text class="shade-title">请选择商品属性</text>
+          <image class="shade-topbar-clone" src="/images/icon_close.png" bindtap="hindeBtn"></image>
+        </view>
+        <view class="overflow">
+          <view class="overflow-content">
+            <view class="centent-display">
+              <image class="display-image" src="{{skusImage_url}}"></image>
+            </view>
+            <view class="centent-prices">
+              <view class="prices-item">¥{{details.price}}</view>
+              <view class="title-item">¥{{details.title}}</view>
+              <view class="delivery-item">已选:{{skusSize}}/{{skusColor}}</view>
+              <view class="delivery-item">库存:{{skusStock}}</view>
+            </view>
+          </view>
+          <view class="overflow-select">
+            <view class="select-list">
+              <view class="select-item {{item.id==skusId ? 'active':''}}"  
+                wx:for="{{skus}}" 
+                wx:key="{{item.id}}"
+                data-id="{{item.id}}"
+                data-size="{{item.size}}"
+                data-color="{{item.color}}"
+                data-image_url="{{item.image_url}}"
+                data-stock="{{item.stock}}"
+                bindtap="handleChange"
+                >{{item.size}}/{{item.color}}</view>
+            <!--   <view class="select-item"></view>
+              <view class="select-item">S/白色</view>
+              <view class="select-item">S/白色</view>
+              <view class="select-item">S/白色</view> -->
+            </view>
+          </view>
+          <view class="overflow-number">
+            <view class="number-title">购买数量</view>
+            <view class="number-count">
+              <view class="stepper">  
+                <text class="{{minusStatus}}" bindtap="bindMinus">-</text>  
+                <input type="number" bindchange="bindManual" value="{{skusCount}}" />  
+                <text class="{{minusStatus}}" bindtap="bindPlus">+</text>  
+              </view>  
+            </view>
+           
+
+
+            <!-- <view class="number-count">
+              <view class="number-reduce" bindtap="handldReduce">-</view>
+              <view class="number-item">{{skusCount}}
+              </view>
+              <view class="number-add" bindtap="handldAdd">+</view>
+            </view> -->
+          </view>
+
+
+          <!-- <view class="overflow-centent">
+            <view class="centent-display">
+              <image class="display-image" src=""></image>
+            </view>
+            <view class="centent-prices">
+              <view class="prices-item">¥79.00</view>
+              <view class="available-item">有货</view>
+              <view class="delivery-item">配送至:金湾区，已选</view>
+            </view>
+            <view class="comment-title">推荐:</view>
+          </view> -->
+         <!--  <view class="overflow-message">
+              <view class="delivery-area">
+                <view class="delivery-area-item">配送区域</view>
+              </view>
+              <view class="color-container">
+                <view class="color-title">主要颜色</view>
+                <view class="color-list">
+                  <view class="color-item">01乳白色</view>
+                  <view class="color-item">01乳白色</view>
+                  <view class="color-item">01乳白色</view>
+                  <view class="color-item">01乳白色</view>
+                </view>
+              </view>
+              <view class="size-comtainer">
+                <view class="size-title">尺寸</view>
+                <view class="size-list">
+                  <view class="size-item">S</view>
+                  <view class="size-item">M</view>
+                  <view class="size-item">L</view>
+                </view>
+              </view>
+              <view class="number-comtainer">
+                <view class="number-title">购买数量</view>
+                <view class="number-count">1</view>
+              </view>
+          </view> -->
+          <view class="overflow-sure">
+            <buttom class="sure-botton" bindtap="handldSubmit">确定</buttom>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+
+  
+</view>

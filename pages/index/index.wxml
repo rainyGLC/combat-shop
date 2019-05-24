@@ -1,13 +1,33 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<view class="page-container">
+  <navigator class="index-container" url="/pages/detail/detail?id={{item.goods_id}}">
+    <swiper class="swiper-section"
+      indicator-dots="true"
+      autoplay="true"
+      interval="5000"
+      duration="1000"
+      indicator-active-color="#000000"
+    >
+    <block wx:for="{{imgUrls}}" wx:key="{{item.id}}" catchtap="handleChange">
+      <swiper-item>
+        <image src="{{item.image_url}}" class="image-swiper" />
+      </swiper-item>
     </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    </swiper>
+  </navigator>
+  <view class="index-recommend">
+
+    <view class="recommend-title">推荐</view>
+
+    <view class="recommend-list">
+      <navigator class="recommend-item" wx:for="{{recommend}}" wx:key="{{item.id}}" 
+        url="/pages/detail/detail?id={{item.id}}">
+        <view class="recommend-card">
+          <image src="{{item.image_url}}" class="card-image"></image>
+        </view>
+        <view class="recommend-price">${{item.price}}</view>
+        <view class="recommend-desc">{{item.title}}</view>
+      </navigator>
+    </view>
   </view>
 </view>

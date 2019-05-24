@@ -1,0 +1,52 @@
+<view class="page-container" wx:if="{{goods.length !== 0}}">
+  <view class="cart-container">
+    <view class="cart-edit">
+      <image class="select-image" src="/images/selected.png" wx:if="{{!selectAllStatus}}" bindtap="handleAllselected"></image>
+      <image class="select-image" src="/images/select.png" wx:else bindtap="handleAllselected"></image>
+      <view class="cart-check-all" bindtap="handleAllselected">全选</view>
+      <view class="cart-check-edit" wx:if="{{!isSwitchover}}" bindtap="handleChange">编辑</view>
+      <view class="cart-check-edit" wx:else bindtap="handleChange">完成</view>
+    </view>
+    <view class="goods-list" wx:if="{{goods.length !== 0}}">
+      <view class="goods-item" wx:for="{{goods}}" wx:key="{{item.id}}">
+        <image class="select-image" src="/images/selected.png" data-index="{{index}}" 
+          wx:if="{{!item.isSelected}}" bindtap="handleSelected"></image>
+        <image class="select-image" src="/images/select.png" data-index="{{index}}" 
+          wx:else bindtap="handleSelected"></image>
+        <view class="goods-image">
+          <image class="goods-image-url" src="{{item.imageUrl}}"></image>
+        </view>
+        <view class="goods-message">
+          <view class="goods-title" wx:if="{{!isSwitchover}}">
+            <text class="goods-desc">{{item.title}}</text>
+            <text class="goods-number">X{{item.num}}</text>
+          </view>
+          <view class="number-count" wx:if="{{isSwitchover}}">
+            <view class="stepper">  
+              <text class="reducce" data-index="{{index}}" bindtap="bindMinus">-</text>  
+              <text class="number">{{item.num}}</text>  
+              <text class="increase" data-index="{{index}}" bindtap="bindPlus">+</text>  
+            </view>  
+          </view>
+          <view class="goods-size">尺码:{{item.size}}</view>
+          <view class="goods-centent">
+            <text class="goods-color">颜色:{{item.color}}</text>
+            <text class="goods-preice">¥{{item.price}}</text>
+          </view>
+        </view>
+
+        <view class="cart-end">
+          <view class="cart-count" wx:if="{{!isSwitchover}}">
+            <text class="cart-number">总计</text>
+            <text class="cart-price">{{totalPrice}}</text>
+          </view>
+          <view class="cart-submit" wx:if="{{!isSwitchover}}">提交订单</view>
+          <view class="cart-submit" wx:else data-index="{{index}}" bindtap="handleDelete">删除</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cart-empty" wx:if="{{goods.length == 0}}">
+  <text class="empty-title">购物车是空的哦～</text>
+</view>

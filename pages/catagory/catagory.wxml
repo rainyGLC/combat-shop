@@ -1,0 +1,67 @@
+<view class="catagory-container">
+  <view class="catagory-section">
+    <scroll-view class="scroll-tab"
+      scroll-x="true" 
+      scroll-into-view="catagory-item_{{currentTab}}">
+      <view class="tab-list">
+        <view class="{{currentTab==0 ? 'tab-item active' : 'tab-item'}}" 
+          id="catagory-item_0"
+          data-current="{{currentTab}}"
+          data-id="0" bindtap="changeSlider">
+          全部
+        </view>
+        <view wx:for="{{catagory}}" wx:key="item.id"
+          id="catagory-item_{{item.id}}" 
+          wx:for-item="item" data-id="{{item.id}}" 
+          bindtap="changeSlider" 
+          data-current="{{currentTab}}"
+          class="{{currentTab == item.id ? 'tab-item active' : 'tab-item'}}">{{item.name}}
+        </view>
+        <view class="tab-line" style="transform:translateX({{currentTab * 120}}rpx);"></view>
+        <!-- <view class="tab-line" style="width:30%"></view> -->
+      </view>
+    </scroll-view>
+  </view>
+
+  <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab" 
+    class="swiper-list">
+    <swiper-item class="all">
+      <view class="list">
+        <view class="recommend-list">
+          <view class="recommend-item" wx:for="{{goods}}" wx:key="{{item.id}}">
+            <view class="recommend-card">
+              <image src="{{item.image_url}}" class="card-image"></image>
+            </view>
+            <view class="recommend-price">${{item.price}}</view>
+            <view class="recommend-desc">{{item.title}}</view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item class="jacket-list">
+      <view class="list">上衣内容列表</view>
+    </swiper-item>
+
+    <swiper-item class="pants-list">
+      <view class="list">裤子内容列表</view>
+    </swiper-item>
+
+    <swiper-item class="shoe-list">
+      <view class="list">鞋子内容列表</view>
+    </swiper-item>
+
+    <swiper-item class="socks-list">
+      <view class="list">袜子内容列表</view>
+    </swiper-item>
+    <swiper-item class="socks-list">
+      <view class="list">手套列表</view>
+    </swiper-item>
+    <swiper-item class="socks-list">
+      <view class="list">帽子内容列表</view>
+    </swiper-item>
+  </swiper>
+</view>
+
+
+
