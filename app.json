@@ -1,9 +1,12 @@
 {
   "pages": [
+    "pages/order/order",
     "pages/shopping_cart/shopping_cart",
+    
     "pages/index/index",
     "pages/detail/detail",
     "pages/catagory/catagory",
+    "pages/address/address",
     "pages/my/my",
     "pages/logs/logs"
   ],

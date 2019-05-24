@@ -1,0 +1,68 @@
+<view class="page-container">
+  <view class="address-container">
+    <view class="address-des" wx:if="{{status==1}}">
+      <view>{{addressMessage.userName}}</view>
+      <view>{{addressMessage.telNumber}}</view>
+      <view>{{addressMessage.provinceName}}{{addressMessage.cityName}}{{addressMessage.countyName}}{{detailInfo}}</view>
+    </view>
+    <view class="address-des" wx:if="{{status==0}}">
+      <view class="address-create" bindtap="handleAddress" >请选择收获地址</view>
+    </view>
+  </view>
+
+  <view class="goods-list">
+    <view class="goods-item" wx:for="{{skus}}" wx:key="{{item.id}}">
+      <view class="goods-image">
+        <image class="goods-image-url" src="{{item.imageUrl}}"></image>
+      </view>
+      <view class="goods-message">
+        <view class="goods-title">
+          <text class="goods-desc">{{item.title}}</text>
+          <text class="goods-number">{{item.num}}</text>
+        </view>
+        <view class="goods-size">尺码:{{item.size}}</view>
+        <view class="goods-centent">
+          <text class="goods-color">颜色:{{item.color}}</text>
+          <text class="goods-preice">¥{{item.price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="commodity-item">
+    <view>商品总价</view>
+    <view>¥{{price}}</view>
+  </view>
+  <view class="commodity-item">
+    <view>运费总价</view>
+    <view>¥{{freight}}</view>
+  </view>
+  <view class="commodity-item">
+    <view>商品优惠</view>
+    <view>¥{{cheap}}</view>
+  </view>
+  <view class="commodity-item">
+    <view>订单号</view>
+    <view>{{express}}</view>
+  </view>
+  <view class="leavea-message">
+    <view class="leavea-content">
+      <text>留言</text>
+      <view class="leavea-section">
+      <textarea class="leavea-title" auto-height />
+      </view>
+    </view>
+  </view>
+
+  <view class="cart-end">
+    <view class="cart-count" wx:if="{{status==1}}">
+      <text class="cart-number">总计:</text>
+      <text class="cart-price">{{price}}</text>
+    </view>
+    <view class="cart-count" wx:if="{{status==0}}">
+      <text class="cart-number">总计:</text>
+      <text class="cart-price">{{price}}</text>
+    </view>
+    <view class="cart-submit" wx:if="{{status==0}}">去结算</view>
+  </view>
+</view>

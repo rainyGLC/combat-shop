@@ -1,4 +1,5 @@
-const Cart = require('./../../models/cart.js')
+const Cart = require('./../../models/cart.js');
+const Order = require('./../../models/order.js')
 Page({
   data:{
     goods:[],//商品列表
@@ -120,6 +121,13 @@ Page({
     let goods = this.data.goods.filter(data=>data.isSelected ==false);//返回没有选中的
     this.setData({goods})
     this.getTotalPrice()
+  },
+  //提交订单
+  handleSubmit:function(e){
+    console.log(e);
+    Order.orderCreat({}).then(res=>{
+      console.log(res.data)
+    })
   }
 
 })

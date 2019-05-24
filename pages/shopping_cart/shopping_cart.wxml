@@ -40,7 +40,8 @@
             <text class="cart-number">总计</text>
             <text class="cart-price">{{totalPrice}}</text>
           </view>
-          <view class="cart-submit" wx:if="{{!isSwitchover}}">提交订单</view>
+          <view class="cart-submit" wx:if="{{!isSwitchover}}" 
+            data-id="{{item.id}}" bindtap="handleSubmit">提交订单</view>
           <view class="cart-submit" wx:else data-index="{{index}}" bindtap="handleDelete">删除</view>
         </view>
       </view>
