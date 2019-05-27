@@ -17,5 +17,12 @@ module.exports = {
       method:'get',
       data:params
     })
+  },
+  orderShow(params){
+    return request({
+      url: api.order,
+      method:'GET',
+      data:params
+    })
   }
 }

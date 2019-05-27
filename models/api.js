@@ -7,5 +7,5 @@ module.exports ={
   cart:'https://www.easy-mock.com/mock/5ce018d44109c342d907b662/shop/cart',
   cartId:(id)=>`https://www.easy-mock.com/mock/5ce018d44109c342d907b662/shop/cart/${id}`,
   order:'https://www.easy-mock.com/mock/5ce018d44109c342d907b662/shop/order',
-  order:(id) =>`https://www.easy-mock.com/mock/5ce018d44109c342d907b662/shop/order/${id}`
+  orderId:(id) =>`https://www.easy-mock.com/mock/5ce018d44109c342d907b662/shop/order/${id}`
 }

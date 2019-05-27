@@ -1,0 +1,223 @@
+<view class="catagory-container">
+  <view class="catagory-section">
+    <scroll-view class="scroll-tab"
+      scroll-x="true" 
+      scroll-into-view="commodity-item_{{item.status}}"
+      >
+      <view class="tab-list">
+        <view class="{{currentTab==0 ? 'tab-item active' : 'tab-item'}}"
+            data-current="commodity-item_0"
+            bindtap="changeSlider"
+            data-status="0"
+          >
+          全部
+        </view>
+        <view wx:for="{{commodity}}" 
+          wx:for-item="item"
+          class="{{currentTab == item.status ? 'tab-item active' : 'tab-item'}}"
+          data-current="commodity-item_{{item.status}}"
+          data-status="{{item.status}}"
+          wx:key="{{item.status}}" bindtap="changeSlider">{{item.status==1 ? '待付款' : item.status==2 ? '进行中' : item.status==3 ? '已完成' : '已取消' }} </view>
+        <view class="tab-line" style="transform:translateX({{currentTab * 160}}rpx);">
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab" 
+    class="swiper-list">
+    <swiper-item class="all">
+      <view class="list" wx:for="{{commodity}}" wx:key="{{item.status}}">
+        <view class="list-order">
+          <text class="order-title">订单号:{{item.id}}</text>
+          <text class="order-obligation">{{item.status==1 ? '待付款' : item.status==2 ? '进行中' : item.status==3 ? '已完成' : '已取消' }}</text>
+        </view>
+
+        <view class="goods-list">
+          <view class="goods-item" wx:for="{{item.skus}}" wx:key="{{data}}" 
+            wx:for-data="data">
+            <view class="goods-image">
+              <image class="goods-image-url" src="{{item.image_url}}"></image>
+            </view>
+            <view class="goods-message">
+              <view class="goods-title">
+                <text class="goods-desc">{{}}</text>
+                <text class="goods-number">{{}}</text>
+              </view>
+              <view class="goods-size">尺寸:{{item.size}}</view>
+              <view class="goods-centent">
+                <text class="goods-color">颜色:{{item.color}}</text>
+                <text class="goods-preice">x{{item.num}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="list-price">
+          <text class="price-num">共计{{item.num}}件商品</text>
+          <text class="price-total">合计:¥{{item.price}}(含运费¥{{item.freight}})</text>
+        </view>
+        <view class="list-card">
+          <view class="card-contact">联系客服</view>
+          <view class="card-contact">取消订单</view>
+          <view class="{{item.status==1 ? 'card-contact active' : 'card-contact'}}">立即付款</view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item class="all">
+      <view class="list" wx:for="{{commodity}}" wx:key="{{item.status}}" 
+        wx:if="{{item.status==1}}">
+        <view class="list-order">
+          <text class="order-title">订单号:{{item.id}}</text>
+          <text class="order-obligation" wx:if="{{item.status==1}}">待付款</text>
+        </view>
+
+        <view class="goods-list">
+          <view class="goods-item" wx:for="{{item.skus}}" wx:key="{{data}}" 
+            wx:for-data="data">
+            <view class="goods-image">
+              <image class="goods-image-url" src="{{item.image_url}}"></image>
+            </view>
+            <view class="goods-message">
+              <view class="goods-title">
+                <!-- <text class="goods-desc">标题:</text> -->
+                <text class="goods-number">{{item.price}}</text>
+              </view>
+              <view class="goods-size">尺寸:{{item.size}}</view>
+              <view class="goods-centent">
+                <text class="goods-color">颜色:{{item.color}}</text>
+                <text class="goods-preice">x{{item.num}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="list-price">
+          <text class="price-num">共计{{item.num}}件商品</text>
+          <text class="price-total">合计:¥{{item.price}}(含运费¥{{item.freight}})</text>
+        </view>
+        <view class="list-card">
+          <view class="card-contact">联系客服</view>
+          <view class="card-contact">取消订单</view>
+          <view class="{{item.status==1 ? 'card-contact active' : 'card-contact'}}">立即付款</view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item class="all">
+      <view class="list" wx:for="{{commodity}}" wx:key="{{item.status}}" 
+        wx:if="{{item.status==2}}">
+        <view class="list-order">
+          <text class="order-title">订单号:{{item.id}}</text>
+          <text class="order-obligation" wx:if="{{item.status==2}}">进行中</text>
+        </view>
+
+        <view class="goods-list">
+          <view class="goods-item" wx:for="{{item.skus}}" wx:key="{{data}}" 
+            wx:for-data="data">
+            <view class="goods-image">
+              <image class="goods-image-url" src="{{item.image_url}}"></image>
+            </view>
+            <view class="goods-message">
+              <view class="goods-title">
+                <!-- <text class="goods-desc">标题:</text> -->
+                <text class="goods-number">{{item.price}}</text>
+              </view>
+              <view class="goods-size">尺寸:{{item.size}}</view>
+              <view class="goods-centent">
+                <text class="goods-color">颜色:{{item.color}}</text>
+                <text class="goods-preice">x{{item.num}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="list-price">
+          <text class="price-num">共计{{item.num}}件商品</text>
+          <text class="price-total">合计:¥{{item.price}}(含运费¥{{item.freight}})</text>
+        </view>
+        <view class="list-card">
+          <view class="card-contact">联系客服</view>
+          <view class="card-contact">取消订单</view>
+          <view class="{{item.status==1 ? 'card-contact active' : 'card-contact'}}">立即付款</view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item class="all">
+      <view class="list" wx:for="{{commodity}}" wx:key="{{item.status}}" 
+        wx:if="{{item.status==3}}">
+        <view class="list-order">
+          <text class="order-title">订单号:{{item.id}}</text>
+          <text class="order-obligation" wx:if="{{item.status==3}}">已完成</text>
+        </view>
+
+        <view class="goods-list">
+          <view class="goods-item" wx:for="{{item.skus}}" wx:key="{{data}}" 
+            wx:for-data="data">
+            <view class="goods-image">
+              <image class="goods-image-url" src="{{item.image_url}}"></image>
+            </view>
+            <view class="goods-message">
+              <view class="goods-title">
+                <!-- <text class="goods-desc">标题:</text> -->
+                <text class="goods-number">{{item.price}}</text>
+              </view>
+              <view class="goods-size">尺寸:{{item.size}}</view>
+              <view class="goods-centent">
+                <text class="goods-color">颜色:{{item.color}}</text>
+                <text class="goods-preice">x{{item.num}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="list-price">
+          <text class="price-num">共计{{item.num}}件商品</text>
+          <text class="price-total">合计:¥{{item.price}}(含运费¥{{item.freight}})</text>
+        </view>
+        <view class="list-card">
+          <view class="card-contact">联系客服</view>
+          <view class="card-contact">取消订单</view>
+          <view class="{{item.status==1 ? 'card-contact active' : 'card-contact'}}">立即付款</view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item class="all">
+      <view class="list" wx:for="{{commodity}}" wx:key="{{item.status}}" 
+        wx:if="{{item.status==4}}">
+        <view class="list-order">
+          <text class="order-title">订单号:{{item.id}}</text>
+          <text class="order-obligation" wx:if="{{item.status==4}}">已取消</text>
+        </view>
+
+        <view class="goods-list">
+          <view class="goods-item" wx:for="{{item.skus}}" wx:key="{{data}}" 
+            wx:for-data="data">
+            <view class="goods-image">
+              <image class="goods-image-url" src="{{item.image_url}}"></image>
+            </view>
+            <view class="goods-message">
+              <view class="goods-title">
+                <!-- <text class="goods-desc">标题:</text> -->
+                <text class="goods-number">{{item.price}}</text>
+              </view>
+              <view class="goods-size">尺寸:{{item.size}}</view>
+              <view class="goods-centent">
+                <text class="goods-color">颜色:{{item.color}}</text>
+                <text class="goods-preice">x{{item.num}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="list-price">
+          <text class="price-num">共计{{item.num}}件商品</text>
+          <text class="price-total">合计:¥{{item.price}}(含运费¥{{item.freight}})</text>
+        </view>
+        <view class="list-card">
+          <view class="card-contact">联系客服</view>
+          <view class="card-contact">取消订单</view>
+          <view class="{{item.status==1 ? 'card-contact active' : 'card-contact'}}">立即付款</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

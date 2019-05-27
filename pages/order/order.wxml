@@ -58,11 +58,12 @@
     <view class="cart-count" wx:if="{{status==1}}">
       <text class="cart-number">总计:</text>
       <text class="cart-price">{{price}}</text>
+      <view class="cart-submit" wx:if="{{status==0}}">去结算</view>
     </view>
     <view class="cart-count" wx:if="{{status==0}}">
       <text class="cart-number">总计:</text>
       <text class="cart-price">{{price}}</text>
     </view>
-    <view class="cart-submit" wx:if="{{status==0}}">去结算</view>
+    <view class="cart-submit" wx:if="{{status==1}}" bindtap="handleAccount">去结算</view>
   </view>
 </view>

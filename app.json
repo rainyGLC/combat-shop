@@ -1,13 +1,12 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/order_management/order_management",
+    "pages/my/my",
     "pages/order/order",
     "pages/shopping_cart/shopping_cart",
-    
-    "pages/index/index",
     "pages/detail/detail",
     "pages/catagory/catagory",
-    "pages/address/address",
-    "pages/my/my",
     "pages/logs/logs"
   ],
   "window": {
@@ -18,7 +17,7 @@
   },
   "tabBar": {
     "color": "#999",
-    "selectedColor": "#333",
+    "selectedCoor": "#333",
     "list": [
       {
         "pagePath": "pages/index/index",

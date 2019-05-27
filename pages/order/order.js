@@ -55,7 +55,7 @@ Page({
             success() {
               wx.chooseAddress({
                 success: res => {
-                  console.log(res,'ooo');
+                  console.log(res);
                   let addressMessage = res;
                   this.setData({addressMessage:addressMessage,status:1});
                   console.log(this.data.addressMessage);
@@ -77,6 +77,9 @@ Page({
         console.log(res)
       }
     })
+  },
+  handleAccount:function(){
+    console.log('1234')
   }
 })
 

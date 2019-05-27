@@ -39,7 +39,7 @@ Page({
     this.setData({
       currentTab:e.currentTarget.dataset.id
     })
-    this.getGood;
+    this.getGoods();
   },
   swiperTab:function(e){
     console.log(e);

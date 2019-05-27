@@ -125,9 +125,10 @@ Page({
   //提交订单
   handleSubmit:function(e){
     console.log(e);
-    Order.orderCreat({}).then(res=>{
-      console.log(res.data)
-    })
+    wx.wx.navigateTo({url:'/pages/order/order'})
+    // Order.orderCreat({}).then(res=>{
+    //   console.log(res.data)
+    // })
   }
 
 })

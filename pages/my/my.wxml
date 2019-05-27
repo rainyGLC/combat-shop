@@ -1,1 +1,40 @@
-<view>my</view>
+<view class="page-container">
+
+  <view class="user-section" wx:if="{{userInfo.nickName}}">
+    <text class="user-nickName">{{userInfo.nickName ? userInfo.nickName : '未登录'}}</text>
+    <image class="user-avatarUrl" src="{{userInfo.avatarUrl}}"></image>
+  </view>
+  
+  <view class="navigator-section" wx:if="{{userInfo.nickName}}">
+    <navigator class="navigator-item" url="/pages/order_management/order_management">
+      <view class="navigator-item-bd">
+        <icon class="iconfont icon-order-active" color="red" />
+        我的订单
+      </view>
+
+      <view class="navigator-item-ft navigator-item-ft_in-access"></view>
+    </navigator>
+
+    <navigator class="navigator-item" url="">
+      <view class="navigator-item-bd">
+        <icon class="iconfont icon-dizhiguanli" color="red" />
+        地址管理
+      </view>
+
+      <view class="navigator-item-ft navigator-item-ft_in-access"></view>
+    </navigator>
+
+    <navigator class="navigator-item" url="">
+      <view class="navigator-item-bd">
+        <icon class="iconfont icon-kefu" />
+        联系客服
+      </view>
+      <view class="navigator-item-ft navigator-item-ft_in-access" color="red"></view>
+    </navigator>
+  </view>
+
+  <!-- 登录模块 --> 
+  <button class="login-btn" hover-class="login-btn-hover" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{!userInfo.nickName}}">
+    授权登录使用
+  </button>
+</view>
